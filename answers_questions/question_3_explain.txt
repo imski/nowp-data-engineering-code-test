@@ -1,0 +1,19 @@
+Several tables need little explanation
+
+programmes : store different programmes
+modules : store module details
+instructors : store intructor details
+students : store student details
+
+The following probable a bit more:
+module_instructors: for a given academic year, provide an instructor for a module
+academic_offer: list the programmes offered for a given acedemic year and the modules it's composed of.
+   A module could appear across several programmes but the students from different programmes would attend the same lectures for the module. 
+student_enrollement: a student can enroll for a 1 programme per academic Year, hence a composed key on acYear and student_id   
+    This allows storage of all students across acedemic years.
+
+The relationships allow fetching the instructor for a given module in any given academic year.
+Or fetching modules taught by a given instructor and the years that instructor taught them.
+Which allows to find students enrolled in programmes that had those modules in those years.
+You can find Students that took that module as it is part of the programme they enrolled in that academic year or any year on record.
+

@@ -1,0 +1,12 @@
+CAP Theorem (Brewer,2000): Briefly explain and give example where A is sacrificed and C is sacrificed.
+
+The CAP Theorem states that in a networked data-system, you cannot have simultaneously more than 2 of the CAP properties:
+Consistency,
+Availability,
+tolerance for network Partitions.
+
+While network partitions (communication break between nodes) are not supposed to be a frequent occurrence, they will happen so you evaluate whether to prioritize Consistency or Availabilty.
+You can use a cache for instance to maintain Availability, but that instroduces lack of Consistency until after recovery from the Partition.
+Having a retry mechanisme for instance could improve Consistency, but eventually you will time out and lose Availabilty.
+Ultimately a succesful approach depends on the business risk as well to create a strategy to enter into a 'Partition mode' that may limit certain functionality between the moment the partition is detected until recovery has been performed, for instance by going back to the last consistent recovery point and replaying the operations submitted during the partition phase.
+Approaches can be granular and a bit grey as well, for instance an ATM system can fall back to not allowing some transactions at all (sacrifice Availability), only allowing a small withdrawal (sacrifice Availability somewhat) while leaving deposit functionality fully Available (sacrifice Consistency) because of the very different 'cost' of the sacrificing Consistency (customer withdraws money he doesn't have vs. some delay in having their balance updated after deposit).
